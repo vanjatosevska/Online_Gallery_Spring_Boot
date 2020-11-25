@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Art gallery</title>
+    <!--<link href="/static/css/bootstrap.min.css" rel="stylesheet" th:href="@{/css/bootstrap.css}"/>-->
+    <!--<script src="/static/js/bootstrap.js" type="application/javascript"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.1/esm/popper-utils.js"></script>-->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        header{
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="/home">ART GALLERY</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse justify-content-end" id="navbarsExampleDefault">
+            <ul class="navbar-nav m-auto">
+                <li class="nav-item m-auto">
+                    <a class="nav-link" href="/home">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/artworks">Artworks</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="/artists">Artists</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/payments/charge">Cart</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                <li class="nav-item" sec:authorize="isAuthenticated()">
+                    <a class="nav-link" sec:authentication="name"></a>
+                </li>
+                <li class="nav-item" sec:authorize="!isAuthenticated()">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0">
+                <div class="input-group input-group-sm">
+                    <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                           placeholder="Search...">
+                    <div class="input-group-append">
+                        <button type="button" class="btn btn-secondary">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</nav>
+<header>
+    <section class="jumbotron text-center" >
+        <div class="container">
+            <h1 class="jumbotron-heading">ARTISTS</h1>
+        </div>
+    </section>
+</header>
+<!--<div th:if="${param.error}">-->
+<!--<h2 class="text-center text-danger " th:text="${param.error}"></h2>-->
+<!--</div>-->
+
+<div class="container mb-4" style="padding-bottom: 100px">
+    <div class="row">
+        <div class="col-md-4">
+            <div class="card" style="width:330px">
+                <img class="card-img-top" src="assets/images/picasso.jpg" height="350px" alt="Pablo Picasso">
+                <div class="card-body">
+                    <h4 class="card-title">Pablo Picasso</h4>
+                    <p class="card-text">Pablo Ruiz Picasso was a Spanish painter, sculptor, printmaker, ceramicist and theatre designer who
+                        spent most of his adult life in France.</p>
+                </div>
+            </div>
+        </div>
+            <div class="col-md-4">
+                <div class="card" style="width:330px">
+                    <img class="card-img-top" src="assets/images/vangogh.jpg" height="350px" alt="Vincent Van Gogh">
+                    <div class="card-body">
+                        <h4 class="card-title">Vincent Van Gogh</h4>
+                        <p class="card-text">Vincent Willem van Gogh was a Dutch post-impressionist painter who is among the most famous and
+                            influential figures in the history of Western art.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card" style="width:330px">
+                    <img class="card-img-top" src="assets/images/dali.jpg" height="350px" alt="Salvador Dali">
+                    <div class="card-body">
+                        <h4 class="card-title">Salvador Dali</h4>
+                        <p class="card-text">Salvador Dalí was a Spanish surrealist artist
+                            renowned for his technical skill, precise draftsmanship and the striking and bizarre images in his work.</p>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="text-black-50 bg-dark">
+    <div class="container" style="padding-top: 30px">
+        <div class="row text-secondary">
+            <div class="col-md-3 col-lg-4 col-xl-3">
+                <h5>About</h5>
+                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                <p class="mb-0">
+                    Art gallery features the world’s leading artists, artworks all in one place.
+                    Our growing database of 1,000,000 works of art by 100,000 artists spans historical, modern,
+                    and contemporary works.
+                </p>
+            </div>
+
+            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto">
+                <h5>Informations</h5>
+                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                <ul class="list-unstyled">
+                    <li><a href="/home">Home</a></li>
+                    <li><a href="/artworks">Artworks</a></li>
+                    <li><a href="/artists">Artists</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto">
+                <h5>Top categories</h5>
+                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                <ul class="list-unstyled">
+                    <li><a href="">Paintings</a></li>
+                    <li><a href="">Photography</a></li>
+                    <li><a href="">Sculpture</a></li>
+                    <li><a href="">Drawings</a></li>
+                </ul>
+            </div>
+
+            <div class="col-md-4 col-lg-3 col-xl-3">
+                <h5>Contact</h5>
+                <hr class="bg-white mb-2 mt-0 d-inline-block mx-auto w-25">
+                <ul class="list-unstyled">
+                    <li><i class="fa fa-home mr-2"></i> Art Gallery</li>
+                    <li><i class="fa fa-envelope mr-2"></i> artgallery@gmail.com</li>
+                    <li><i class="fa fa-phone mr-2"></i> + 078 201 402</li>
+                    <li><i class="fa fa-phone mr-2"></i> + 02 2234 765</li>
+                </ul>
+            </div>
+            <div class="col-12 mt-3">
+                <p class="text-center">
+                    <span class="fa fa-copyright">2020 Art Gallery</span>
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+</html>
